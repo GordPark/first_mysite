@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex_index</title>
+</head>
+<body>
+    {% if latest_question_list %}
+    <ul>질문 목록 페이지 생성하기:
+    {% for question in latest_question_list %}
+        <li><a href="/prg_pj/{{ question.id }}/">question: {{ question.question_text}}</a></li>
+        <li><a href="/prg_pj/{{ question.id }}/">choice: {{ question.choice_set.all.0}}</a></li>
+        <li><a href="/prg_pj/{{ question.id }}/"> votes: {{ question.choice_set.all.0.votes}}</a></li>
+        <br>
+        
+    {% endfor %}
+    </ul>
+    <ul>최근 생성된 5개의 Question:
+        {% for question in latest_question_list %}
+        <li><a href="/prg_pj/{{ question.id }}/"> 5_question: {{ question.question_text|date|slice:":5"}}</a></li>
+
+        {% endfor %}
+    </ul>
+
+
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+</body>
+</html>
+
+<!-- <li><a href="/prg_pj/{{ question.id }}/">첫 글자를 대문자: {{ question.choice_set.all.0|capfirst}}</a></li>
+        <li><a href="/prg_pj/{{ question.id }}/">질문 개수 세기: {{ question.question_text.all.0|length}}</a></li>
+        <li><a href="/prg_pj/{{ question.id }}/">빈 질문 텍스트 대체하기: {{ question.question_text|length}}</a></li>
+        <li><a href="/prg_pj/{{ question.id }}/">투표 수를 사용하여 파일 크기 형태로 표시: {{ question.choice_set.all.0.votes|filesizeformat}}</a></li>
+        <li><a href="/prg_pj/{{ question.id }}/">선택지 목록을 쉼표로 구분하여 표시: {{ question.choice_set.all.0|capfirst}}</a></li>
+        <li><a href="/prg_pj/{{ question.id }}/">처음 20자만 표시하고 나머지는 "..."으로 대체: {{ question.choice_set.all.0|capfirst}}</a></li><br>  -->

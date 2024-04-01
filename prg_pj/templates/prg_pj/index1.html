@@ -1,0 +1,23 @@
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <!-- <li><a href="/prg_pj/{{ question.id }}/">question_text: {{ question.question_text }}</a></li><br>
+        <li><a href="/prg_pj/{{ question.id }}/">question_pub_date: {{ question.pub_date }}</a></li><br>
+        <li><a href="/prg_pj/{{ question.id }}/">question_id: {{ question.id }}</a></li><br>
+        <li><a href="/prg_pj/{{ question.id }}/">question_choice_queryset: {{ question.choice_set.all }}</a></li><br>
+        <li><a href="/prg_pj/{{ question.id }}/">choice_텍스트: {{ question.choice_set.all.0 }}</a></li><br>
+        <li><a href="/prg_pj/{{ question.id }}/">votes: {{ question.choice_set.all.0.votes}}</a></li><br>
+        <li><a href="/prg_pj/{{ question.id }}/">choice_개수: {{ question.choice_set.all.count}}</a></li><br> -->
+        <li><a href="/prg_pj/{{ question.id }}/">pub_date/YYYY-MM-DD: {{ question.pub_date|date:"Y-h-m"}}</a></li>
+        <li><a href="/prg_pj/{{ question.id }}/">첫 글자를 대문자: {{ question.choice_set.all.0|capfirst}}</a></li>
+        <li><a href="/prg_pj/{{ question.id }}/">질문 개수 세기: {{ question.question_text.all.0|length}}</a></li>
+        <li><a href="/prg_pj/{{ question.id }}/">빈 질문 텍스트 대체하기: {{ question.question_text|length}}</a></li>
+        <li><a href="/prg_pj/{{ question.id }}/">투표 수를 사용하여 파일 크기 형태로 표시: {{ question.choice_set.all.0.votes|filesizeformat}}</a></li>
+        <li><a href="/prg_pj/{{ question.id }}/">선택지 목록을 쉼표로 구분하여 표시: {{ question.choice_set.all.0|capfirst}}</a></li>
+        <li><a href="/prg_pj/{{ question.id }}/">처음 20자만 표시하고 나머지는 "..."으로 대체: {{ question.choice_set.all.0|capfirst}}</a></li><br> 
+
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
