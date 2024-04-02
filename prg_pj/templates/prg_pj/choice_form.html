@@ -1,0 +1,8 @@
+<h1>New Choice</h1>
+<h1>{{question.question_text}}</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Choice</button>
+</form>

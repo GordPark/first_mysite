@@ -1,0 +1,7 @@
+
+<h1>Are you sure you want to delete "{{ object.question_text }}"?</h1>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Yes, delete</button>
+    <a href="{% url 'prg_pj:index' %}">Cancel</a>
+</form>
